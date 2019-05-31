@@ -1,0 +1,15 @@
+$color: red;
+$path: '../imgs/';
+body {
+  background-color: $color;
+
+  img {
+    max-width: 200px;
+  }
+}
+
+.char {
+  width: 500px;
+  height: 500px;
+  background: url($path + 'char.jpg') no-repeat center top / cover;
+}

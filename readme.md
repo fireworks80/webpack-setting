@@ -110,18 +110,48 @@ module: {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
       }
   ]
 }
 
-# root에 .babelrc
 
-{
-  "preset": [
-    "@babel/preset-env"
-  ]
-}
 ````
 
+##  scss 설정
+````
+# cli
+# - style-loader // js로부터 style node를 생성
+# - sass-loader // sass -> css 로 컴파일
+# - node-sass
+# - css-loader // CommonJS로 css translates
+# - mini-css-extract-plugin 설치 (css파일을 외부로 따로 분리)
+# 설치
+
+# webpack.config.js
+module: {
+  rules: [
+    {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+  ]
+},
+ plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
+  ]
