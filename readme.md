@@ -117,4 +117,12 @@ module: {
   ]
 }
 
+# root에 .babelrc
+
+{
+  "preset": [
+    "@babel/preset-env"
+  ]
+}
 ````
+
