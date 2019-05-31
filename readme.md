@@ -79,3 +79,42 @@ module.exports = {
   ]
 };
 ````
+
+## webpack dev server
+- 파일 작업시 live-reloading된다.
+- 자동으로 번들링은 되지 않음
+````
+# cli
+npm i -D webpack-dev-server
+
+# package.json
+
+"script": {
+  "start:dev": "webpack-dev-server --open"
+}
+
+#cli
+npm run start:dev
+````
+
+## babel setting
+````
+# cli
+npm i @babel/core @babel/preset-env babel-loader
+````
+
+````
+# webpack.config.js
+module: {
+  rules: [
+    {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+  ]
+}
+
+````
