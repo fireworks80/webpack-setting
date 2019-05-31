@@ -6,7 +6,6 @@ module.exports = {
     rules: [
       {
         // 로컬의 <img src="image.png"> 작업시 require('./image.png')로 추가 시켜준다
-        // file-loader, url-loader 권장
         test: /\.html$/,
         use: [
           {
