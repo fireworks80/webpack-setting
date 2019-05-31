@@ -41,3 +41,41 @@ npm run build
 # html파일은 작업 파일이므로 html파일도 완성되면 dist/로 생성해주는  html-webpack-plugin
 # <img src="image.png"> 작업시 require('./image.png') 이런식으로 포함시켜주는 html-load 추가
 ````
+
+````
+# cli
+npm i -D html-loader html-webpack-plugin
+````
+
+## webpack 설정파일
+````
+webpack.config.js
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        // 로컬의 <img src="image.png"> 작업시 require('./image.png')로 추가 시켜준다
+        // file-loader, url-loader 권장
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      // template에 있는 index.html 을 dist/index.html로 생성한다
+      // dist/에 생성될때 bundle될 js파일은 자동으로 삽입 된다.
+      template: './src/index.html',
+      filename: 'index.html'
+    })
+  ]
+};
+````
